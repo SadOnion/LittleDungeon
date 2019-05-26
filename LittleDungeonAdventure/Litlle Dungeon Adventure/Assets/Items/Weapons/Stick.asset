@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cbfc39d53802941b3527d24f4b309c, type: 3}
+  m_Name: Stick
+  m_EditorClassIdentifier: 
+  ItemName: Stick
+  Icon: {fileID: -746925011147420045, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
+  DamageBonus: 3
+  DamagePercentBouns: 0
+  EquipmentType: 4
+  weaponStates:
+  - {fileID: 6941147512549773339, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
+  - {fileID: -4312233329768824747, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
+  - {fileID: 8129821803009358560, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
+  - {fileID: -644942584607148346, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
+  - {fileID: -4726309459872871046, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}

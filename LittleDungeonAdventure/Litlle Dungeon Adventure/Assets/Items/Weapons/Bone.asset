@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cbfc39d53802941b3527d24f4b309c, type: 3}
+  m_Name: Bone
+  m_EditorClassIdentifier: 
+  ItemName: Bone
+  Icon: {fileID: -2452178680872132512, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
+  DamageBonus: 5
+  DamagePercentBouns: 0
+  EquipmentType: 4
+  weaponStates:
+  - {fileID: -8971350055190752442, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
+  - {fileID: 3073638703106975694, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
+  - {fileID: -3575726872487877815, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
+  - {fileID: 5868180032445133853, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
+  - {fileID: 4671246688571668997, guid: 78564de548ca0eb4eaf35655df3647c0, type: 3}
