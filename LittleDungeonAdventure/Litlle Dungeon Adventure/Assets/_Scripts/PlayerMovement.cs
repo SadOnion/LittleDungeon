@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using Kryz.CharacterStats.Examples;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour,IDamageable
 {
     public int speed;
     public float jumpHeight;
@@ -12,12 +11,15 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D body;
     Collider2D collider;
     Animator anim;
+    Character character;
+    private Vector2 attackSize = new Vector2(1, .4f);
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
+        character = GetComponent<Character>();
     }
 
     // Update is called once per frame
@@ -40,7 +42,22 @@ public class PlayerMovement : MonoBehaviour
         {
             invPanel.SetActive(!invPanel.activeSelf);
         }
-        if (Input.GetKeyDown(KeyCode.R)) anim.SetTrigger("Attack");
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Attack();
+            anim.SetTrigger("Attack");
+        }
+    }
+
+    private void Attack()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCapsuleAll(transform.position + Vector3.right * transform.localScale.x, attackSize, CapsuleDirection2D.Horizontal, 0); ;
+        foreach (var item in hitColliders)
+        {
+            IDamageable obj = item.GetComponent<IDamageable>();
+            if (obj != null) obj.TakeDamage(character.Damage.Value);
+            Debug.Log("Attack fo " + character.Damage.Value);
+        }
     }
 
     private void HandleJumping()
@@ -103,5 +120,16 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("IsWalking", true);
         }else anim.SetBool("IsWalking", false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position + Vector3.right * transform.localScale.x, Vector3.one);
+        Gizmos.color = Color.red;
+    }
+
+    public void TakeDamage(float amount)
+    {
+        throw new NotImplementedException();
     }
 }
