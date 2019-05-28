@@ -5,6 +5,7 @@ namespace Kryz.CharacterStats.Examples
 	public class Character : MonoBehaviour
 	{
         public CharacterStat Damage;
+        public CharacterStat Armor;
 
 		public Inventory inventory;
 		[SerializeField] EquipmentPanel equipmentPanel;
@@ -12,7 +13,7 @@ namespace Kryz.CharacterStats.Examples
 
 		private void Awake()
 		{
-			statPanel.SetStats(Damage);
+			statPanel.SetStats(Damage,Armor);
 			statPanel.UpdateStatValues();
 
 			inventory.OnItemRightClickedEvent += EquipFromInventory;

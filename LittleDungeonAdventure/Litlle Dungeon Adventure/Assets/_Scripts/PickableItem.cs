@@ -4,7 +4,7 @@ using UnityEngine;
 using Kryz.CharacterStats.Examples;
 public class PickableItem : MonoBehaviour,IPickable
 {
-
+    
     [SerializeField] Item item;
 
     public void PickUp()
@@ -14,5 +14,10 @@ public class PickableItem : MonoBehaviour,IPickable
         {
             Destroy(gameObject);
         }
+    }
+    private void OnValidate()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.sprite = item.Icon;
     }
 }
