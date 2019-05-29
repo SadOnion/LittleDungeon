@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Kryz.CharacterStats.Examples;
 
 public interface IPickable
 {
-    void PickUp();
+    void PickUp(Character c);
 }

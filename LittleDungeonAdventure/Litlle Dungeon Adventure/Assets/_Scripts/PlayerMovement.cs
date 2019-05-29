@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour,IDamageable
     public GameObject invPanel;
 
     Rigidbody2D body;
-    Collider2D collider;
+    Collider2D box;
     Animator anim;
     Character character;
     private Vector2 attackSize = new Vector2(1, .4f);
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour,IDamageable
     {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        collider = GetComponent<BoxCollider2D>();
+        box = GetComponent<BoxCollider2D>();
         character = GetComponent<Character>();
     }
 
@@ -30,11 +30,15 @@ public class PlayerMovement : MonoBehaviour,IDamageable
         HandleJumping();
         OtherInput();
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        IPickable item = collision.gameObject.GetComponent<IPickable>();
+        if (item != null) item.PickUp(character);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IPickable item = collision.gameObject.GetComponent<IPickable>();
-        if (item != null) item.PickUp();
+        if (item != null) item.PickUp(character);
     }
     private void OtherInput()
     {
@@ -45,6 +49,18 @@ public class PlayerMovement : MonoBehaviour,IDamageable
         if (Input.GetKeyDown(KeyCode.R))
         {
             anim.SetTrigger("Attack");
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Collider2D[] col = Physics2D.OverlapBoxAll(transform.position,Vector2.one,0);
+            foreach (var item in col)
+            {
+                IInteractible interactible = item.gameObject.GetComponent<IInteractible>();
+                if (interactible != null) interactible.Interact(character);
+            }
+           
+            
+           
         }
     }
 
@@ -78,7 +94,7 @@ public class PlayerMovement : MonoBehaviour,IDamageable
 
     private bool CanJump()
     {
-        Bounds bounds = collider.bounds;
+        Bounds bounds = box.bounds;
         RaycastHit2D info = Physics2D.Raycast(bounds.min, Vector2.down, .2f);
         RaycastHit2D info2 = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.down, .2f);
         if(info.collider != null)
@@ -133,7 +149,8 @@ public class PlayerMovement : MonoBehaviour,IDamageable
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position + Vector3.right * transform.localScale.x, Vector3.one);
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(transform.position,Vector3.one);
     }
 
     public void TakeDamage(float amount)

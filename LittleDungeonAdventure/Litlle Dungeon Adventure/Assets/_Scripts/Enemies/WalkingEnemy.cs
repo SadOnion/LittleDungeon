@@ -12,6 +12,7 @@ public class WalkingEnemy : Enemy
     {
         base.Start();
         direction = 1;
+        transform.Translate(transform.position + Vector3.right*5);
     }
     // Update is called once per frame
     void Update()
@@ -21,7 +22,8 @@ public class WalkingEnemy : Enemy
             direction *= -1;
             
         }
-        body.velocity = new Vector2(speed * Time.deltaTime*direction,body.velocity.y);
+        
+        //body.velocity = new Vector2(speed * Time.deltaTime*direction,body.velocity.y);
     }
 
     private bool ObstacleNear()

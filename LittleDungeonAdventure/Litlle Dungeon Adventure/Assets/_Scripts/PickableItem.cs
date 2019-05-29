@@ -7,9 +7,8 @@ public class PickableItem : MonoBehaviour,IPickable
     
     [SerializeField] Item item;
 
-    public void PickUp()
+    public void PickUp(Character c)
     {
-        Character c = FindObjectOfType<Character>();
         if (c.inventory.AddItem(item))
         {
             Destroy(gameObject);
