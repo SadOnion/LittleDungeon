@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour,IDamageable
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Attack();
             anim.SetTrigger("Attack");
         }
     }
@@ -84,12 +83,22 @@ public class PlayerMovement : MonoBehaviour,IDamageable
         RaycastHit2D info2 = Physics2D.Raycast(new Vector2(bounds.max.x, bounds.min.y), Vector2.down, .2f);
         if(info.collider != null)
         {
-            if (info.collider.isTrigger == false) return true;
+            if (info.collider.isTrigger == false)
+            {
+                
+                return true;
+            }
+
         }
         if (info2.collider != null)
         {
-            if (info2.collider.isTrigger == false) return true;
+            if (info2.collider.isTrigger == false)
+            {
+               
+                return true;
+            }
         }
+        
         return false;
     }
 
@@ -113,8 +122,7 @@ public class PlayerMovement : MonoBehaviour,IDamageable
     }
     private void HandleAnimation()
     {
-        if (body.velocity.y == 0 && CanJump()) anim.SetBool("OnGround", true);
-        else anim.SetBool("OnGround", false);
+        anim.SetBool("OnGround", CanJump());
         anim.SetFloat("yVelocity", body.velocity.y);
         if (Mathf.Abs(body.velocity.x) > 0)
         {

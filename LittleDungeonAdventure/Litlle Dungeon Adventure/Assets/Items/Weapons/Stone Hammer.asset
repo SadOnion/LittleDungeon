@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cbfc39d53802941b3527d24f4b309c, type: 3}
   m_Name: Stone Hammer
   m_EditorClassIdentifier: 
-  ItemName: 
-  Icon: {fileID: 0}
-  DamageBonus: 0
+  ItemName: Stone Hammer
+  Icon: {fileID: -7453385983355587540, guid: 820c4864302d4974a94f6441740461f4, type: 3}
+  DamageBonus: 15
   DamagePercentBouns: 0
   ArmorBonus: 0
   ArmorPercentBouns: 0
-  EquipmentType: 0
-  weaponStates: []
+  EquipmentType: 4
+  weaponStates:
+  - {fileID: -5911125811003780463, guid: 820c4864302d4974a94f6441740461f4, type: 3}
+  - {fileID: -6360127185036504539, guid: 820c4864302d4974a94f6441740461f4, type: 3}
+  - {fileID: 7456978257207038146, guid: 820c4864302d4974a94f6441740461f4, type: 3}
+  - {fileID: 102207428035446746, guid: 820c4864302d4974a94f6441740461f4, type: 3}
+  - {fileID: -4648247879730049390, guid: 820c4864302d4974a94f6441740461f4, type: 3}

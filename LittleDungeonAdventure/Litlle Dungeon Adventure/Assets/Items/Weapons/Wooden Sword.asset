@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cbfc39d53802941b3527d24f4b309c, type: 3}
   m_Name: Wooden Sword
   m_EditorClassIdentifier: 
-  ItemName: 
-  Icon: {fileID: 0}
-  DamageBonus: 0
+  ItemName: Wooden Sword
+  Icon: {fileID: 6327393697372535843, guid: 815682a5220bea146a3649b4046cf71c, type: 3}
+  DamageBonus: 5
   DamagePercentBouns: 0
   ArmorBonus: 0
   ArmorPercentBouns: 0
-  EquipmentType: 0
-  weaponStates: []
+  EquipmentType: 4
+  weaponStates:
+  - {fileID: 2937226500909031952, guid: 815682a5220bea146a3649b4046cf71c, type: 3}
+  - {fileID: 6633106427471529382, guid: 815682a5220bea146a3649b4046cf71c, type: 3}
+  - {fileID: -653591463449820525, guid: 815682a5220bea146a3649b4046cf71c, type: 3}
+  - {fileID: 1395621749243322769, guid: 815682a5220bea146a3649b4046cf71c, type: 3}
+  - {fileID: 3419890749621890743, guid: 815682a5220bea146a3649b4046cf71c, type: 3}
