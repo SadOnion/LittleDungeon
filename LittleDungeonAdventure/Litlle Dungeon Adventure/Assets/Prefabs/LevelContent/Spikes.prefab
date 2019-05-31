@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6335754896391428592}
   - component: {fileID: 5758141724057226178}
   - component: {fileID: 6502654559188036482}
+  - component: {fileID: 7277093724488507775}
   m_Layer: 0
   m_Name: Spikes
   m_TagString: Untagged
@@ -72,6 +73,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9898b6b70bf673741b8af4619c0715fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  deltaTime: 0
+--- !u!50 &7277093724488507775
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228991723531052714}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6852929574132157603
 GameObject:
   m_ObjectHideFlags: 0

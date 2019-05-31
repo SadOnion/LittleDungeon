@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Kryz.CharacterStats.Examples;
 using UnityEngine;
 
@@ -12,22 +13,27 @@ public class PlayerMovement : MonoBehaviour,IDamageable
     Collider2D box;
     Animator anim;
     Character character;
+    SpriteRenderer sr;
+    bool invincible;
+    bool canMove;
     private Vector2 attackSize = new Vector2(1, .4f);
     // Start is called before the first frame update
     void Start()
     {
+        canMove = true;
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         box = GetComponent<BoxCollider2D>();
         character = GetComponent<Character>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        HandleMovement();
+        HandleMovement(canMove);
         HandleAnimation();
-        HandleJumping();
+        HandleJumping(canMove);
         OtherInput();
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -48,6 +54,8 @@ public class PlayerMovement : MonoBehaviour,IDamageable
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
+            body.velocity = new Vector2(0, body.velocity.y);
+            canMove = false;
             anim.SetTrigger("Attack");
         }
         if (Input.GetKeyDown(KeyCode.F))
@@ -66,6 +74,7 @@ public class PlayerMovement : MonoBehaviour,IDamageable
 
     private void Attack()
     {
+        
         Collider2D[] hitColliders = Physics2D.OverlapCapsuleAll(transform.position + Vector3.right * transform.localScale.x, attackSize, CapsuleDirection2D.Horizontal, 0); ;
         foreach (var item in hitColliders)
         {
@@ -74,16 +83,23 @@ public class PlayerMovement : MonoBehaviour,IDamageable
             Debug.Log("Attack fo " + character.Damage.Value);
         }
     }
-
-    private void HandleJumping()
+    void CanMove()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        canMove = true;
+    }
+    private void HandleJumping(bool canJump)
+    {
+        if (canJump)
         {
-            if (CanJump())
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Jump();
+                if (CanJump())
+                {
+                    Jump();
+                }
             }
         }
+        
         
     }
     private void Jump()
@@ -118,11 +134,15 @@ public class PlayerMovement : MonoBehaviour,IDamageable
         return false;
     }
 
-    private void HandleMovement()
+    private void HandleMovement(bool canMove)
     {
-        float xAxis = Input.GetAxisRaw("Horizontal");
-        ChangeLocalScale(xAxis);
-        body.velocity = new Vector2( xAxis* Time.deltaTime * speed, body.velocity.y);
+        if (canMove)
+        {
+            float xAxis = Input.GetAxisRaw("Horizontal");
+            ChangeLocalScale(xAxis);
+            body.velocity = new Vector2(xAxis * Time.deltaTime * speed, body.velocity.y);
+        }
+        
     }
 
     private void ChangeLocalScale(float xAxis)
@@ -155,6 +175,22 @@ public class PlayerMovement : MonoBehaviour,IDamageable
 
     public void TakeDamage(float amount)
     {
-        throw new NotImplementedException();
+        if (invincible == false)
+        {
+            StartCoroutine(Invincible());
+        }
     }
+    IEnumerator Invincible()
+    {
+        invincible = true;
+        for (int i = 0; i < 5; i++)
+        {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .5f);
+            yield return new WaitForSeconds(.1f);
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+            yield return new WaitForSeconds(.1f);
+        }
+        invincible = false;
+    }
+    
 }

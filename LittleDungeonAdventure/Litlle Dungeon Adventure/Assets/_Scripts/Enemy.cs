@@ -6,7 +6,7 @@ public abstract class Enemy : MonoBehaviour,IDamageable
 {
     public float maxHp;
     private float currentHp;
-    [SerializeField]float damage;
+    [SerializeField]protected float damage;
     protected Rigidbody2D body;
     // Start is called before the first frame update
     protected virtual void Start()

@@ -34,7 +34,7 @@ public class Crate : MonoBehaviour,IDamageable
                 if (Random.Range(0, 101) <= item.chance)
                 {
                     GameObject o = Instantiate(item.prefab, transform.position, Quaternion.identity);
-                    o.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0f, 5f), Random.Range(0f, 5f));
+                    o.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3f, 3f), Random.Range(0f, 5f));
                 }
             }
         

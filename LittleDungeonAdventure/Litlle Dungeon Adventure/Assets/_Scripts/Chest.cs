@@ -14,7 +14,7 @@ public class Chest : MonoBehaviour,IInteractible
     {
         anim = GetComponent<Animator>();
     }
-    public void Interact(Character c)
+    public virtual void Interact(Character c)
     {
         anim.SetTrigger("Unlock");
     }
@@ -25,7 +25,7 @@ public class Chest : MonoBehaviour,IInteractible
         {
             GameObject o = Instantiate(item, transform.position, Quaternion.identity);
             Rigidbody2D body = o.GetComponent<Rigidbody2D>();
-            if (body != null) body.velocity = new Vector2(Random.Range(0f, 5f), Random.Range(0f, 5f));
+            if (body != null) body.velocity = new Vector2(Random.Range(-3f, 3f), Random.Range(0f, 5f));
         }
     }
 

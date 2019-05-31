@@ -85,6 +85,8 @@ namespace Kryz.CharacterStats.Examples
             }
         }
         public int GetMoney() { return money; }
-        
+
+
+       
     }
 }

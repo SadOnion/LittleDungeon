@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7318326161587324016}
   - component: {fileID: 7318326161587324023}
   - component: {fileID: 7318326161587324022}
+  - component: {fileID: 364991529}
   m_Layer: 0
   m_Name: Treasure Chest
   m_TagString: Untagged
@@ -124,3 +125,22 @@ MonoBehaviour:
   - {fileID: 3111349240245157349, guid: 3d47d22743212ba43a5c08446f644635, type: 3}
   - {fileID: 772475739365413841, guid: 33a1218b60e4694418d3eef7b2198e04, type: 3}
   - {fileID: 772475739365413841, guid: 33a1218b60e4694418d3eef7b2198e04, type: 3}
+--- !u!95 &364991529
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318326161587324021}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d8771800b498b6478954e9fc757fdb3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
