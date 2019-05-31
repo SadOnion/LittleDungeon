@@ -7,10 +7,20 @@ public class Chest : MonoBehaviour,IInteractible
 {
 
     [SerializeField] GameObject[] content;
+    private Animator anim;
 
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     public void Interact(Character c)
     {
-        Debug.Log("interacting with" + c.ToString());
+        anim.SetTrigger("Unlock");
+    }
+
+    public void DropContent()
+    {
         foreach (var item in content)
         {
             GameObject o = Instantiate(item, transform.position, Quaternion.identity);

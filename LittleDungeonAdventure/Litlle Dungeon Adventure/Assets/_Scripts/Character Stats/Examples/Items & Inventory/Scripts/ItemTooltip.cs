@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
-
+using TMPro;
 namespace Kryz.CharacterStats.Examples
 {
 	public class ItemTooltip : MonoBehaviour
 	{
 		public static ItemTooltip Instance;
 
-		[SerializeField] Text nameText;
-		[SerializeField] Text slotTypeText;
-		[SerializeField] Text statsText;
+		[SerializeField] TextMeshProUGUI nameText;
+		[SerializeField] TextMeshProUGUI slotTypeText;
+		[SerializeField] TextMeshProUGUI statsText;
 
 		private StringBuilder sb = new StringBuilder();
 
@@ -29,6 +29,7 @@ namespace Kryz.CharacterStats.Examples
 			if (!(itemToShow is EquippableItem)) {
 				return;
 			}
+            
 
 			EquippableItem item = (EquippableItem)itemToShow;
 

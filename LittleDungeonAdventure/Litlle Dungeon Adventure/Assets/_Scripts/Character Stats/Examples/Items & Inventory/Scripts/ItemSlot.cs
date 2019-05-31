@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 
 namespace Kryz.CharacterStats.Examples
 {
-	public class ItemSlot : MonoBehaviour, IPointerClickHandler
-	{
+	public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    {
 		[SerializeField] Image image;
 
 		public event Action<Item> OnRightClickEvent;
@@ -40,9 +40,9 @@ namespace Kryz.CharacterStats.Examples
 			if (image == null)
 				image = GetComponent<Image>();
 		}
-        /*
+        
 		public void OnPointerEnter(PointerEventData eventData)
-		{
+		{ 
 			ItemTooltip.Instance.ShowTooltip(Item);
 		}
 
@@ -50,6 +50,7 @@ namespace Kryz.CharacterStats.Examples
 		{
 			ItemTooltip.Instance.HideTooltip();
 		}
-        */
-	}
+       
+
+    }
 }
